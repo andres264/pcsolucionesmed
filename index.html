@@ -165,6 +165,26 @@ navMenu.querySelectorAll('a').forEach(link => {
     menuToggle.setAttribute('aria-expanded', 'false');
   });
 });
+// Cierra el menú al hacer scroll o clic fuera (solo en móviles)
+function closeMenuOnOutsideOrScroll(e) {
+  if (window.innerWidth <= 768) {
+    if (navMenu.classList.contains('open')) {
+      // Clic fuera del menú y botón
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        navMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+  }
+}
+function closeMenuOnScroll() {
+  if (window.innerWidth <= 768 && navMenu.classList.contains('open')) {
+    navMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+}
+document.addEventListener('click', closeMenuOnOutsideOrScroll);
+window.addEventListener('scroll', closeMenuOnScroll);
 </script>
 </body>
 </html>
