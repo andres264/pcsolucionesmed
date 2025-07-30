@@ -17,8 +17,13 @@
         <img src="assets/img/logosolo.png" alt="PC Soluciones Logo" class="logo-icon" />
         <img src="assets/img/letraslogo.png" alt="PC Soluciones" class="logo-letras" />
       </a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav>
-        <ul>
+        <ul id="main-menu">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -143,5 +148,23 @@
 
   <!-- Script opcional para el formulario (puedes personalizar) -->
   <script src="assets/js/main.js"></script>
+</body>
+<script>
+// Menú hamburguesa funcional para móviles
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('nav ul');
+menuToggle.addEventListener('click', function() {
+  navMenu.classList.toggle('open');
+  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', !expanded);
+});
+// Cierra el menú al hacer clic en un enlace
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
 </body>
 </html>
