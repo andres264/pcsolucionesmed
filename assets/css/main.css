@@ -444,7 +444,7 @@ footer {
     max-width: 320px;
     background: rgba(15, 49, 75, 0.92);
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 6px 6px;
     z-index: 1200;
     padding: 0;
     gap: 0;
