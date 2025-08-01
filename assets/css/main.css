@@ -169,7 +169,7 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  height: 370px; /* Ajusta según tu preferencia visual */
+  height: 410px; /* Más espacio para texto, imagen no se recorta */
   position: relative;
 }
 
@@ -192,6 +192,8 @@ nav a:hover {
   border-top-right-radius: 16px;
   background: #fff;
   padding: 0;
+  /* Fuerza altura fija para todas las imágenes */
+  flex-shrink: 0;
 }
 
 .service-img-icon {
@@ -210,11 +212,25 @@ nav a:hover {
   margin-top: 1.2rem;
   position: relative;
   z-index: 1;
+  max-height: 3.4em; /* Permite hasta 2 líneas completas */
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
 }
 
 .service-desc {
   font-size: 0.98rem;
   color: #444b5a;
+  max-height: 4.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@media (min-width: 769px) {
+  .service-desc {
+    font-size: 0.93rem;
+  }
 }
 
 .service-btn {
