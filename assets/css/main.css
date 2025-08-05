@@ -3,9 +3,27 @@
     display: none !important;
   }
 }
+
+@media (max-width: 700px) {
+  .service-icon {
+    min-height: 220px !important;
+    max-height: 260px !important;
+    height: 220px !important;
+    align-items: stretch !important;
+  }
+  .service-img-icon {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 16px 16px 0 0 !important;
+    background: #fff;
+    display: block;
+  }
+}
+
 /*
   PC Soluciones - Estilos principales
-  Paleta: #0a2342 (azul oscuro), #185adb (azul principal), #f6f9ff (fondo), #ffffff (blanco), #1e2746 (texto)
+  Paleta: #0a2342 (azul oscuro), #185adb (azul prpcsolincipal), #f6f9ff (fondo), #ffffff (blanco), #1e2746 (texto)
   Fuente: 'Segoe UI', Arial, sans-serif
 */
 
@@ -460,6 +478,7 @@ footer {
 
 
 @media (max-width: 768px) {
+  
   .navbar {
     position: fixed;
     top: 0;
