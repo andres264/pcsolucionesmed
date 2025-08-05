@@ -1,3 +1,72 @@
+.service-btn {
+  text-decoration: none !important;
+}
+@media (max-width: 700px) {
+  .service-details img {
+    width: 100%;
+    max-width: 97vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(10,35,66,0.10);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+  }
+}
+/* --- Ajuste visual SOLO para móviles en páginas sin contenedores (service-details) --- */
+@media (max-width: 700px) {
+  .service-details h2 {
+    text-align: center !important;
+    font-size: 1.45rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+  .service-details p, .service-details ul {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 1.01rem !important;
+    max-width: 98vw !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+/* --- Ajustes responsive SOLO para subpáginas con body.subpage --- */
+@media (max-width: 700px) {
+  body.subpage .services-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  body.subpage .service {
+    height: auto !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    padding-bottom: 1.5rem;
+  }
+  body.subpage .service-title {
+    max-height: unset !important;
+    font-size: 1.15rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  body.subpage .service-desc {
+    max-height: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    font-size: 1.02rem;
+    margin-bottom: 0.5rem;
+  }
+  body.subpage .service-icon {
+    min-height: 120px !important;
+    max-height: 180px !important;
+    height: auto !important;
+  }
+  body.subpage .service-img-icon {
+    height: auto !important;
+    max-height: 180px !important;
+    object-fit: contain !important;
+  }
+}
 @media (min-width: 769px) {
   .menu-toggle {
     display: none !important;
