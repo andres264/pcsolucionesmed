@@ -180,44 +180,7 @@
   </footer>
 
   <!-- Script opcional para el formulario (puedes personalizar) -->
-  <script src="assets/js/main.js"></script>
-</body>
-<script>
-// Menú hamburguesa funcional para móviles
-const menuToggle = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('nav ul');
-menuToggle.addEventListener('click', function() {
-  navMenu.classList.toggle('open');
-  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', !expanded);
-});
-// Cierra el menú al hacer clic en un enlace
-navMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  });
-});
-// Cierra el menú al hacer scroll o clic fuera (solo en móviles)
-function closeMenuOnOutsideOrScroll(e) {
-  if (window.innerWidth <= 768) {
-    if (navMenu.classList.contains('open')) {
-      // Clic fuera del menú y botón
-      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        navMenu.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    }
-  }
-}
-function closeMenuOnScroll() {
-  if (window.innerWidth <= 768 && navMenu.classList.contains('open')) {
-    navMenu.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-}
-document.addEventListener('click', closeMenuOnOutsideOrScroll);
-window.addEventListener('scroll', closeMenuOnScroll);
-</script>
+</footer>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
