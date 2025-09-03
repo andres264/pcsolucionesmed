@@ -52,7 +52,7 @@
         </div>
         <div class="service-title">RAM</div>
         <div class="service-desc">Memorias RAM de alto rendimiento para todo tipo de equipos.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="RAM">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -60,7 +60,7 @@
         </div>
         <div class="service-title">Discos Sólidos</div>
         <div class="service-desc">SSD de distintas capacidades y velocidades.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Discos Sólidos">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -68,7 +68,7 @@
         </div>
         <div class="service-title">Tarjetas Gráficas</div>
         <div class="service-desc">GPUs para gaming, diseño y trabajo profesional.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Tarjetas Gráficas">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -76,7 +76,7 @@
         </div>
         <div class="service-title">Chasis</div>
         <div class="service-desc">Gabinetes modernos y funcionales para tu PC.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Chasis">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -84,7 +84,7 @@
         </div>
         <div class="service-title">Combos teclado y mouse coorporativos</div>
         <div class="service-desc">Combos de teclados mecánicos y de membrana para todo uso.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Combos teclado y mouse">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -92,7 +92,7 @@
         </div>
         <div class="service-title">Diademas</div>
         <div class="service-desc">Diademas con micrófono para gaming y oficina.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Diademas">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -100,7 +100,7 @@
         </div>
         <div class="service-title">Fuentes de poder</div>
         <div class="service-desc">Fuentes certificadas para máxima seguridad y eficiencia.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Fuentes de poder">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -108,7 +108,7 @@
         </div>
         <div class="service-title">Monitores</div>
         <div class="service-desc">Monitores de alta resolución para trabajo y entretenimiento.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Monitores">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -116,7 +116,7 @@
         </div>
         <div class="service-title">Boards</div>
         <div class="service-desc">Tarjetas madre compatibles con las últimas tecnologías.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Boards">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -124,7 +124,7 @@
         </div>
         <div class="service-title">Mouse</div>
         <div class="service-desc">Mouse ergonómicos y de precisión para todo tipo de usuario.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Mouse">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -132,7 +132,7 @@
         </div>
         <div class="service-title">Parlantes</div>
         <div class="service-desc">Parlantes estéreo y sistemas de sonido para PC.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Parlantes">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -140,7 +140,7 @@
         </div>
         <div class="service-title">Sillas Gamer</div>
         <div class="service-desc">Sillas ergonómicas y cómodas para largas jornadas.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Sillas Gamer">Más info</button>
       </div>
     </div>
   </section>
@@ -169,12 +169,36 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic a los botones de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botones = document.querySelectorAll('.service-btn');
+      const tituloSeccion = 'Venta de Componentes';
+      
+      botones.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const servicio = this.getAttribute('data-service');
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, estoy interesado en el componente *${servicio}* de la sección *${tituloSeccion}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      });
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

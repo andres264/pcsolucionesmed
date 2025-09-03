@@ -43,7 +43,7 @@
     <main>
       <!-- Sección de servicios de impresoras con contenedores -->
       <section class="services">
-        <h2 class="services-title">Mantenimiento de Impresoras</h2>
+        <h2 class="services-title">Venta y mantenimiento de Impresoras</h2>
         <p class="services-desc" style="max-width: 800px; margin: 0 auto 2rem auto; color: #222; font-size: 1.13rem;">Ofrecemos servicios completos para impresoras: instalación, recarga de tinta y tóner, mantenimiento preventivo y correctivo, diagnóstico de fallas y configuración en red o local. Trabajamos con impresoras nuevas y usadas de todas las marcas.</p>
         <div class="services-list">
       <div class="service">
@@ -52,7 +52,7 @@
         </div>
         <div class="service-title">Impresoras nuevas</div>
         <div class="service-desc">Venta de impresoras totalmente nuevas, con garantia de un año.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Impresoras nuevas">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -60,7 +60,7 @@
         </div>
         <div class="service-title">Recarga de tinta y tóner</div>
         <div class="service-desc">Recarga profesional de cartuchos y tóner para impresoras de todas las marcas.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Recarga de tinta y tóner">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -68,7 +68,7 @@
         </div>
         <div class="service-title">Mantenimiento preventivo</div>
         <div class="service-desc">Limpieza interna y externa, revisión de rodillos y cabezales para prolongar la vida útil.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Mantenimiento preventivo">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -76,7 +76,7 @@
         </div>
         <div class="service-title">Mantenimiento correctivo</div>
         <div class="service-desc">Reparación de fallas, reemplazo de piezas y solución de atascos de papel.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Mantenimiento correctivo">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -84,7 +84,7 @@
         </div>
         <div class="service-title">Soporte remoto</div>
         <div class="service-desc">Asistencia a distancia para configuración de drivers y solución de problemas menores o de configuraciones.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Soporte remoto">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -92,7 +92,7 @@
         </div>
         <div class="service-title">Venta de repuestos</div>
         <div class="service-desc">Suministro de piezas originales y compatibles para cada impresora.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Venta de repuestos">Más info</button>
       </div>
     </div>
   </section>
@@ -122,12 +122,36 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic a todos los botones de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botones = document.querySelectorAll('.service-btn');
+      const tituloSeccion = document.querySelector('.services-title').textContent;
+      
+      botones.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevenir el comportamiento predeterminado
+          const servicio = this.getAttribute('data-service');
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, me interesa el servicio *${servicio}* de la sección *${tituloSeccion}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      });
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

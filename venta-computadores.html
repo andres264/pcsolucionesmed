@@ -52,7 +52,7 @@
             </div>
             <div class="service-title">Portátiles nuevos</div>
             <div class="service-desc">Equipos modernos, potentes y con garantía de fábrica.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="Portátiles nuevos">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -60,7 +60,7 @@
             </div>
             <div class="service-title">Portátiles usados</div>
             <div class="service-desc">Portátiles reacondicionados, probados y listos para trabajar.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="Portátiles usados">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -68,7 +68,7 @@
             </div>
             <div class="service-title">Portátiles Gamer</div>
             <div class="service-desc">Laptops de alto rendimiento para juegos y diseño.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="Portátiles Gamer">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -76,7 +76,7 @@
             </div>
             <div class="service-title">All-in-One</div>
             <div class="service-desc">Equipos compactos y elegantes para hogar u oficina.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="All-in-One">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -84,7 +84,7 @@
             </div>
             <div class="service-title">PC de Escritorio</div>
             <div class="service-desc">Computadores de escritorio para todo tipo de necesidades.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="PC de Escritorio">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -92,7 +92,7 @@
             </div>
             <div class="service-title">Mini PCs</div>
             <div class="service-desc">Soluciones compactas y eficientes para espacios reducidos.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="Mini PCs">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -100,7 +100,7 @@
             </div>
             <div class="service-title">Apple usados</div>
             <div class="service-desc">MacBooks y iMacs reacondicionados y garantizados.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="Apple usados">Más info</button>
           </div>
           <div class="service">
             <div class="service-icon">
@@ -108,7 +108,7 @@
             </div>
             <div class="service-title">PCs para empresas</div>
             <div class="service-desc">Equipos robustos y configurables para ambientes corporativos.</div>
-            <button class="service-btn">Más info</button>
+            <button class="service-btn" data-service="PCs para empresas">Más info</button>
           </div>
         </div>
       </section>
@@ -138,12 +138,36 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic a los botones de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botones = document.querySelectorAll('.service-btn');
+      const tituloSeccion = 'Venta de Computadores';
+      
+      botones.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const servicio = this.getAttribute('data-service');
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, estoy interesado en *${servicio}* de la sección *${tituloSeccion}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      });
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

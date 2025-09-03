@@ -42,7 +42,7 @@
         </div>
         <div class="service-title">Karpersky Standard</div>
         <div class="service-desc">Protección básica contra virus, malware y amenazas en línea. Ideal para quienes quieren seguridad esencial sin complicaciones.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Karpersky Standard">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -50,7 +50,7 @@
         </div>
         <div class="service-title">Karpersky Plus</div>
         <div class="service-desc">Seguridad completa con antivirus, VPN ilimitada y gestor de contraseñas. Perfecto para proteger tu vida digital diaria.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Karpersky Plus">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -58,7 +58,7 @@
         </div>
         <div class="service-title">Karpersky Premium</div>
         <div class="service-desc">Máxima protección con funciones avanzadas, seguridad de identidad y asistencia técnica prioritaria. Pensado para quienes lo quieren todo.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Karpersky Premium">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -66,7 +66,7 @@
         </div>
         <div class="service-title">Antivirus Gratuitos</div>
         <div class="service-desc">Soluciones de seguridad gratuitas para protección básica contra amenazas. Incluye instalación y configuración de opciones como Avast Free, AVG o Microsoft Defender.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Antivirus Gratuitos">Más info</button>
       </div>
     </div>
   </section>
@@ -95,12 +95,36 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic a todos los botones de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botones = document.querySelectorAll('.service-btn');
+      const tituloSeccion = document.querySelector('.services-title').textContent;
+      
+      botones.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevenir el comportamiento predeterminado
+          const servicio = this.getAttribute('data-service');
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, me interesa el servicio *${servicio}* de la sección *${tituloSeccion}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      });
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

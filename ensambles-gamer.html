@@ -52,7 +52,7 @@
         </div>
         <div class="service-title">Equipos prearmados</div>
         <div class="service-desc">PCs listos para usar, seleccionados por expertos para gaming y streaming.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Equipos prearmados">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -60,7 +60,7 @@
         </div>
         <div class="service-title">Personalizados</div>
         <div class="service-desc">Configura tu PC gamer a medida según tus juegos y necesidades.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Personalizados">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -68,7 +68,7 @@
         </div>
         <div class="service-title">Presupuesto básico</div>
         <div class="service-desc">Opciones económicas para iniciarte en el mundo gamer.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Presupuesto básico">Más info</button>
       </div>
       <div class="service">
         <div class="service-icon">
@@ -76,7 +76,7 @@
         </div>
         <div class="service-title">Ensamble y testeo</div>
         <div class="service-desc">Armado profesional y pruebas de rendimiento para tu tranquilidad.</div>
-        <button class="service-btn">Más info</button>
+        <button class="service-btn" data-service="Ensamble y testeo">Más info</button>
       </div>
     </div>
   </section>
@@ -106,12 +106,36 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic a todos los botones de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botones = document.querySelectorAll('.service-btn');
+      const tituloSeccion = document.querySelector('.services-title').textContent;
+      
+      botones.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevenir el comportamiento predeterminado
+          const servicio = this.getAttribute('data-service');
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, me interesa el servicio *${servicio}* de la sección *${tituloSeccion}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      });
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

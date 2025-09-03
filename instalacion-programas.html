@@ -54,7 +54,11 @@
           <li style="margin-bottom: 0.5em;"><span style="color: #25d366; font-size: 1.2em; margin-right: 0.5em;">✔</span>Configuración de antivirus y seguridad</li>
           <li style="margin-bottom: 0.5em;"><span style="color: #25d366; font-size: 1.2em; margin-right: 0.5em;">✔</span>Soporte para instalación remota o presencial</li>
         </ul>
-        <p style="font-size: 1.08rem; color: #444;">Asegura el correcto funcionamiento de tus programas con nuestro servicio profesional y personalizado.</p>
+        <p style="font-size: 1.08rem; color: #444; margin-bottom: 1.5rem;">Asegura el correcto funcionamiento de tus programas con nuestro servicio profesional y personalizado.</p>
+        <button class="service-btn" data-service="Instalación de programas" style="background: #25d366; color: white; border: none; padding: 12px 24px; border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-top: 1rem;">
+          <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i>
+          Solicitar servicio
+        </button>
       </div>
       <div style="flex: 1 1 340px; min-width: 260px; max-width: 480px; display: flex; align-items: center; justify-content: center;">
         <img src="assets/img/Instalacion-programas.png" alt="Instalación de programas" style="max-width: 100%; border-radius: 16px; box-shadow: 0 2px 12px rgba(10,35,66,0.10);" />
@@ -87,12 +91,42 @@
   <!-- Botón flotante de WhatsApp -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="assets/css/whatsapp-button.css">
+  <style>
+    /* Ocultar botón flotante en móviles */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: none;
+      }
+      /* Asegurar que el botón de servicio sea más visible en móviles */
+      .service-btn {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
+        justify-content: center;
+      }
+    }
+  </style>
 
   <a href="https://wa.link/piuv0a" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>¡Háblanos por WhatsApp!</span>
   </a>
 
+  <script>
+    // Agregar evento de clic al botón de servicio
+    document.addEventListener('DOMContentLoaded', function() {
+      const botonServicio = document.querySelector('.service-btn');
+      if (botonServicio) {
+        botonServicio.addEventListener('click', function(e) {
+          e.preventDefault();
+          const servicio = this.getAttribute('data-service');
+          const tituloSeccion = 'Instalación de programas';
+          const mensaje = encodeURIComponent(`Hola PC Soluciones, me interesa el servicio *${servicio}*. Me gustaría recibir más información.`);
+          window.location.href = `https://api.whatsapp.com/send?phone=573233389238&text=${mensaje}`;
+        });
+      }
+    });
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
