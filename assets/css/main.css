@@ -235,6 +235,12 @@ nav a:hover {
   padding: 0 1.5rem;
 }
 
+/* Ajustes para la sección de servicios */
+#servicios {
+  scroll-margin-top: 90px; /* Ajustado para navegación desde otras páginas */
+  padding-top: 1rem;
+}
+
 .services-title {
   text-align: center;
   font-size: 2rem;
@@ -352,16 +358,20 @@ nav a:hover {
   transform: translateY(-2px) scale(1.04);
 }
 
+/* Ajustes para la sección de contacto */
+#contacto {
+  scroll-margin-top: 90px; /* Mismo valor que para la sección de servicios */
+  padding-top: 1rem;
+}
+
 /* Contacto con QR */
 .contact-section {
-  background: var(--color-white);
-  margin: 3rem 0 0 0;
-  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background-color: #f9f9f9;
+  padding: 2.5rem 1.5rem 2rem;
   border-radius: 18px;
   max-width: 900px;
   box-shadow: 0 2px 12px rgba(10,35,66,0.07);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 3rem;
   min-height: 600px;
   display: flex;
   flex-direction: column;
